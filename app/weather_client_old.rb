@@ -3,20 +3,15 @@ require 'dotenv/load'
 require 'faraday'
 require 'json'
 
-class WeatherClient
-  # Make Faraday connection injectable for easier testing.
-  def initialize(conn = nil)
-    @conn = conn || Faraday.new(
-      url: 'https://api.weatherapi.com/v1',
-      params: { key: ENV['WEATHER_API_KEY'] },
-      headers: { 'Accept' => 'application/json' }
-    )
-  end
-
+class WeatherClientOld
   def today(city:)
-    endpoint = 'current.json'
-    params = { q: city, aqi: 'yes' }
-    response = @conn.get(endpoint, params)
+    response = Faraday.get('https://api.weatherapi.com/v1/current.json',
+                           {
+                             key: ENV['WEATHER_API_KEY'],
+                             q: city,
+                             aqi: 'yes'
+                           },
+                           { 'Accept' => 'application/json' })
     parse_today(JSON.parse(response.body))
   end
 

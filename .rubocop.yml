@@ -8,6 +8,9 @@ AllCops:
     - "Gemfile.lock"
     - "spec/spec_helper.rb"
 
+Layout/LineLength:
+  Max: 150
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
