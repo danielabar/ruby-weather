@@ -5,6 +5,7 @@ require 'json'
 
 class WeatherClient
   # Make Faraday connection injectable for easier testing.
+  # See https://lostisland.github.io/faraday/adapters/testing for more details.
   def initialize(conn = nil)
     @conn = conn || Faraday.new(
       url: 'https://api.weatherapi.com/v1',

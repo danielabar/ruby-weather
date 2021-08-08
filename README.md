@@ -1,6 +1,8 @@
 # Ruby Weather
 
-Very thin Ruby wrapper around the [Weather API](https://www.weatherapi.com/docs/) to explore different approaches for testing code that uses [Faraday](https://lostisland.github.io/faraday/usage/).
+Very thin Ruby wrapper around the [Weather API](https://www.weatherapi.com/docs/) to demonstrate different approaches for testing code that uses [Faraday](https://lostisland.github.io/faraday/usage/).
+
+The first uses regular RSpec stubbing when `Faraday.verb` is used. And the second uses Faraday provided stubs. In order to make use of this technique, a Faraday connection object should be used and should be injected into the class via constructor.
 
 ## Setup
 
